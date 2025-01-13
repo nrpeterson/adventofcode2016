@@ -1,4 +1,3 @@
-use itertools::Itertools;
 use adventofcode2016::build_main;
 
 mod parse {

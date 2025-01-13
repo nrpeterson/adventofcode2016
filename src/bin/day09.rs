@@ -1,5 +1,4 @@
 use adventofcode2016::build_main;
-use itertools::Itertools;
 
 #[derive(Clone, Debug)]
 enum Token<'a> {

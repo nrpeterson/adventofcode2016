@@ -68,13 +68,3 @@ fn part2(input: &str) -> String {
 }
 
 build_main!("day05.txt", "Part 1" => part1, "Part 2" => part2);
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_hash() {
-        part2("abc");
-    }
-}

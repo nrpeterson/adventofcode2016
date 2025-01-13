@@ -1,6 +1,6 @@
-use std::collections::HashSet;
-use std::ops::{Add, AddAssign, Mul};
 use adventofcode2016::build_main;
+use std::collections::HashSet;
+use std::ops::{AddAssign, Mul};
 
 #[derive(Copy, Clone)]
 enum Direction { Left, Right }
@@ -10,15 +10,15 @@ use Direction::*;
 struct Instruction { direction: Direction, steps: isize }
 
 mod parse {
+    use crate::Direction::{Left, Right};
+    use crate::Instruction;
     use nom::branch::alt;
     use nom::bytes::complete::tag;
     use nom::character::complete::{char, digit1};
     use nom::combinator::{map, map_res, value};
-    use nom::IResult;
     use nom::multi::separated_list1;
     use nom::sequence::pair;
-    use crate::Direction::{Left, Right};
-    use crate::Instruction;
+    use nom::IResult;
 
     fn number(input: &str) -> IResult<&str, isize> {
         map_res(digit1, str::parse::<isize>)(input)
@@ -85,7 +85,7 @@ impl State {
 
 fn part1(input: &str) -> isize {
     let instructions = parse::instructions(input).unwrap().1;
-    let mut state = State { position: Pair(0, 0), direction: Pair(0, 1) };
+    let state = State { position: Pair(0, 0), direction: Pair(0, 1) };
 
     instructions.iter().fold(state, |mut cur, &instr| {
         cur.apply(instr);
